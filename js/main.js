@@ -17,12 +17,18 @@ getRandomFromRange(min ,max);
 //Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно
 function getRandomFromRangeToFixed(min, max) {
   if (min < max && min >=0) {
-    return Math.random() * (max - min + 1) + min;
-  }
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor ((Math.random() * (max - min + 1) + min) * 100) / 100;
+  } else {
+    console.log('Ошибка');}
 }
 getRandomFromRangeToFixed (min, max)
 
 
+
+//    min = alert((min).toFixed(n));
+//max = alert((max).toFixed(n));
 
 
 
