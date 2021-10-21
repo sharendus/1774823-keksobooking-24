@@ -70,7 +70,4 @@ const createAnnouncement = () => {
 };
 
 
-//создание массива из 10 объктов
-const carrayOfDeclarations = Array.from({length: 10}, createAnnouncement);
-
-export {avatars, types, checkins, features, photos, getArray, createAnnouncement, carrayOfDeclarations};
+export {createAnnouncement};
