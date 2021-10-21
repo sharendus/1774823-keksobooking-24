@@ -21,6 +21,8 @@ const photos = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
+const lat = getRandomFromRangeToFixed(35.65000, 35.70000, 5);
+const lng = getRandomFromRangeToFixed(139.70000, 139.80000, 5);
 
 //функция для массива из строк
 const getArray = (arrayOfStrings) => {
@@ -51,7 +53,7 @@ const createAnnouncement = () => {
     },
     offer : {
       title: 'заголовок',
-      address: `${getRandomFromRangeToFixed(35.65000, 35.70000, 5)  }, ${  getRandomFromRangeToFixed(139.70000, 139.80000, 5)}`,
+      address: lat, lng,
       price: getRandomFromRange(1, 100),
       type: types[typeIndex],
       rooms: getRandomFromRange(1, 10),
@@ -63,8 +65,8 @@ const createAnnouncement = () => {
       photos:getArray(photos),
     },
     location : {
-      lat:  getRandomFromRangeToFixed(35.65000, 35.70000, 5),
-      lng:  getRandomFromRangeToFixed(139.70000, 139.80000, 5),
+      lat,
+      lng,
     },
   };
 };
