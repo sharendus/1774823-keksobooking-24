@@ -21,8 +21,6 @@ const photos = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
-const lat = getRandomFromRangeToFixed(35.65000, 35.70000, 5);
-const lng = getRandomFromRangeToFixed(139.70000, 139.80000, 5);
 
 //функция для массива из строк
 const getArray = (arrayOfStrings) => {
@@ -46,6 +44,8 @@ const createAnnouncement = () => {
   const avatarIndex = getRandomFromRange(0, avatars.length - 1);
   const typeIndex = getRandomFromRange(0, types.length - 1);
   const check = getRandomFromRange(0, checkins.length - 1);
+  const lat = getRandomFromRangeToFixed(35.65000, 35.70000, 5);
+  const lng = getRandomFromRangeToFixed(139.70000, 139.80000, 5);
 
   return {
     author: {
