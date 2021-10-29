@@ -1,5 +1,3 @@
-import {createAnnouncement} from './data';
+import './data.js';
+import './card.js';
 
-//создание массива из 10 объктов
-const carrayOfDeclarations = Array.from({length: 10}, createAnnouncement);
-carrayOfDeclarations;

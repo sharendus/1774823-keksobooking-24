@@ -1,4 +1,4 @@
-import {getRandomFromRange, getRandomFromRangeToFixed} from './util';
+import {getRandomFromRange, getRandomFromRangeToFixed} from './util.js';
 
 // переменные
 const avatars = [
@@ -15,6 +15,7 @@ const avatars = [
 ];
 const types = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const checkins = ['12:00', '13:00', '14:00'];
+const checkouts = ['12:00', '13:00', '14:00'];
 const features= ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 const photos = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
@@ -43,7 +44,8 @@ const getArray = (arrayOfStrings) => {
 const createAnnouncement = () => {
   const avatarIndex = getRandomFromRange(0, avatars.length - 1);
   const typeIndex = getRandomFromRange(0, types.length - 1);
-  const check = getRandomFromRange(0, checkins.length - 1);
+  const checkinIndex = getRandomFromRange(0, checkins.length - 1);
+  const checkoutIndex = getRandomFromRange(0, checkouts.length - 1);
   const lat = getRandomFromRangeToFixed(35.65000, 35.70000, 5);
   const lng = getRandomFromRangeToFixed(139.70000, 139.80000, 5);
 
@@ -57,9 +59,9 @@ const createAnnouncement = () => {
       price: getRandomFromRange(1, 100),
       type: types[typeIndex],
       rooms: getRandomFromRange(1, 10),
-      guests: getRandomFromRange(1, 20),
-      checkin:checkins[check],
-      checkout:checkins[check],
+      guests: null,
+      checkin:checkins[checkinIndex],
+      checkout:checkouts[checkoutIndex],
       features:getArray(features),
       description: 'описание помещения',
       photos:getArray(photos),
@@ -71,5 +73,8 @@ const createAnnouncement = () => {
   };
 };
 
+//создание массива из 10 объктов
+const carrayOfDeclarations = Array.from({length: 10}, createAnnouncement);
+carrayOfDeclarations;
 
-export {createAnnouncement};
+export {createAnnouncement, carrayOfDeclarations};
