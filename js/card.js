@@ -20,15 +20,12 @@ const similarAnnouncements = (ads) => {
   featureContainer.innerHTML = '';
   ads.offer.features.forEach((feature) => {
     const featureListItem = document.createElement('li');
-
     featureListItem.classList.add('popup__feature');
     featureListItem.classList.add(`popup__feature--${  feature}`);
     featureContainer.appendChild(featureListItem);
   });
 
-
   clonedTemplateCard.querySelector('.popup__description').textContent = ads.offer.description;
-
 
   const photoContainer = clonedTemplateCard.querySelector('.popup__photos');
   photoContainer.innerHTML = '';
@@ -42,27 +39,20 @@ const similarAnnouncements = (ads) => {
     photoContainer.appendChild(newPhotoList);
   });
 
-
   clonedTemplateCard.querySelector('.popup__avatar').src = ads.author.avatar;
   containerForAds.appendChild(clonedTemplateCard);
 
-  if (ads.offer.title === null) {
-    clonedTemplateCard.querySelector('.popup__title').style.display = 'none';
+  if (ads.offer.features === undefined) {
+    clonedTemplateCard.querySelector('.popup__features').style.display = 'none';
   }
-  if (ads.offer.address === null) {
-    clonedTemplateCard.querySelector('.popup__text--address').style.display = 'none';
+  if (ads.offer.description === undefined) {
+    clonedTemplateCard.querySelector('.popup__description').style.display = 'none';
   }
-  if (ads.offer.price === null) {
-    clonedTemplateCard.querySelector('.popup__text--price').style.display = 'none';
+  if (ads.offer.photos === undefined) {
+    clonedTemplateCard.querySelector('.popup__photos').style.display = 'none';
   }
-  if (ads.offer.type === null) {
-    clonedTemplateCard.querySelector('.popup__type').style.display = 'none';
-  }
-  if (ads.offer.rooms === null) {
-    clonedTemplateCard.querySelector('.popup__text--capacity').style.display = 'none';
-  }
-  if (ads.offer.checkin === null) {
-    clonedTemplateCard.querySelector('.popup__text--time').style.display = 'none';
+  if (ads.author.avatar === undefined) {
+    clonedTemplateCard.querySelector('.popup__avatar').style.display = 'none';
   }
 };
 

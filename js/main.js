@@ -8,6 +8,3 @@ carrayOfDeclarations;
 
 //вызов функции
 similarAnnouncements(carrayOfDeclarations[0]);
-
-
-export {carrayOfDeclarations};
