@@ -11,7 +11,22 @@ const similarAnnouncements = (ads) => {
   clonedTemplateCard.querySelector('.popup__title').textContent = ads.offer.title;
   clonedTemplateCard.querySelector('.popup__text--address').textContent = ads.offer.address;
   clonedTemplateCard.querySelector('.popup__text--price').textContent = `${ads.offer.price  } ₽/ночь`;
-  clonedTemplateCard.querySelector('.popup__type').textContent = ads.offer.type;
+  clonedTemplateCard.querySelector('.popup__type').textContent = getClothingType(ads.offer.type);
+
+  function getClothingType (type) {
+    if (type === 'palace') {
+      return 'Дворец';
+    } else if (type === 'flat') {
+      return 'Квартира';
+    } else if (type === 'house') {
+      return 'Дом';
+    } else if (type === 'bungalow') {
+      return 'Бунгало';
+    } else if (type === 'hotel') {
+      return 'Отель';
+    }
+  }
+
   clonedTemplateCard.querySelector('.popup__text--capacity').textContent = `${ads.offer.rooms  } комнаты для ${  ads.offer.guests  } гостей`;
   clonedTemplateCard.querySelector('.popup__text--time').textContent = `Заезд после ${  ads.offer.checkin  }, выезд до ${  ads.offer.checkout}`;
 

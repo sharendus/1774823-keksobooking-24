@@ -14,7 +14,6 @@ const avatars = [
   'img/avatars/user10.png',
 ];
 const types = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
-const typesRus = ['Дворец', 'Квартира', 'Дом', 'Бунгало', 'Отель'];
 const checkins = ['12:00', '13:00', '14:00'];
 const checkouts = ['12:00', '13:00', '14:00'];
 const features= ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
@@ -50,20 +49,6 @@ const createAnnouncement = () => {
   const lat = getRandomFromRangeToFixed(35.65000, 35.70000, 5);
   const lng = getRandomFromRangeToFixed(139.70000, 139.80000, 5);
 
-  function getClothingType (type) {
-    if (type === types[0]) {
-      return typesRus[0];
-    } else if (type === types[1]) {
-      return typesRus[1];
-    } else if (type === types[2]) {
-      return typesRus[2];
-    } else if (type === types[3]) {
-      return typesRus[3];
-    } else if (type === types[4]) {
-      return typesRus[4];
-    }
-  }
-
   return {
     author: {
       avatar: avatars[avatarIndex],
@@ -72,7 +57,7 @@ const createAnnouncement = () => {
       title: 'заголовок',
       address: lat, lng,
       price: getRandomFromRange(1, 100),
-      type: getClothingType(types[typeIndex]),
+      type: types[typeIndex],
       rooms: getRandomFromRange(1, 10),
       guests: getRandomFromRange(1, 10),
       checkin:checkins[checkinIndex],
