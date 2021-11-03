@@ -1,5 +1,6 @@
 const form = document.querySelector('.ad-form');
 const formFieldset = form.querySelectorAll('.ad-form__element');
+
 const map = document.querySelector('.map__filters');
 const mapSelect = map.querySelectorAll('select');
 const mapFieldset = map.querySelector('fieldset');
