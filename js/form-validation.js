@@ -25,6 +25,7 @@ titleInputForm.addEventListener('input', () => {
 });
 
 
+
 const testPageValue = () => {
   if (typeSelectForm.value === 'bungalow') {
     priceInputForm.min = '0';
