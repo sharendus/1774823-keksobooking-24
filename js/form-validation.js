@@ -11,7 +11,6 @@ const capacitySelectForm = document.querySelector('#capacity');
 const timeinSelectForm = document.querySelector('#timein');
 const timeoutSelectForm = document.querySelector('#timeout');
 
-
 titleInputForm.addEventListener('input', () => {
   const valueLength = titleInputForm.value.length;
   if (valueLength < MIN_TITLE_LENGTH) {
@@ -23,8 +22,6 @@ titleInputForm.addEventListener('input', () => {
   }
   titleInputForm.reportValidity();
 });
-
-
 
 const testPageValue = () => {
   if (typeSelectForm.value === 'bungalow') {
@@ -84,12 +81,32 @@ roomSelectForm.addEventListener('change', () => {
   }
 });
 
-timeinSelectForm.addEventListener('change', () => {
+/*timeinSelectForm.addEventListener('change', () => {
   for (let i = 0; i < timeinSelectForm.length; i++) {
     if (timeinSelectForm[i].selected) {
       timeoutSelectForm[i].selected = true;
       //timeoutSelectForm.disabled = true;
     }
+  }
+});*/
+
+timeinSelectForm.addEventListener('change', () => {
+  if (timeinSelectForm.value === '12:00') {
+    timeoutSelectForm.value = '12:00';
+  } else if (timeinSelectForm.value === '13:00') {
+    timeoutSelectForm.value = '13:00';
+  } else if (timeinSelectForm.value === '14:00') {
+    timeoutSelectForm.value = '14:00';
+  }
+});
+
+timeoutSelectForm.addEventListener('change', () => {
+  if (timeoutSelectForm.value === '12:00') {
+    timeinSelectForm.value = '12:00';
+  } else if (timeoutSelectForm.value === '13:00') {
+    timeinSelectForm.value = '13:00';
+  } else if (timeoutSelectForm.value === '14:00') {
+    timeinSelectForm.value = '14:00';
   }
 });
 
