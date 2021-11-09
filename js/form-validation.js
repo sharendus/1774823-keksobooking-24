@@ -81,15 +81,6 @@ roomSelectForm.addEventListener('change', () => {
   }
 });
 
-/*timeinSelectForm.addEventListener('change', () => {
-  for (let i = 0; i < timeinSelectForm.length; i++) {
-    if (timeinSelectForm[i].selected) {
-      timeoutSelectForm[i].selected = true;
-      //timeoutSelectForm.disabled = true;
-    }
-  }
-});*/
-
 timeinSelectForm.addEventListener('change', () => {
   if (timeinSelectForm.value === '12:00') {
     timeoutSelectForm.value = '12:00';

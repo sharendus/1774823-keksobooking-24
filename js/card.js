@@ -1,4 +1,3 @@
-const containerForAds = document.querySelector('.map__canvas'); //сюда будем добавлять обьявления
 
 //нашли шаблон
 const templateСardAnnouncement = document.querySelector('#card')
@@ -55,7 +54,7 @@ const similarAnnouncements = (ads) => {
   });
 
   clonedTemplateCard.querySelector('.popup__avatar').src = ads.author.avatar;
-  containerForAds.appendChild(clonedTemplateCard);
+
 
   if (ads.offer.features === undefined) {
     clonedTemplateCard.querySelector('.popup__features').style.display = 'none';
@@ -69,6 +68,8 @@ const similarAnnouncements = (ads) => {
   if (ads.author.avatar === undefined) {
     clonedTemplateCard.querySelector('.popup__avatar').style.display = 'none';
   }
+
+  return clonedTemplateCard;
 };
 
 export {similarAnnouncements};
