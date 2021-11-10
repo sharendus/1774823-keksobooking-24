@@ -67,7 +67,7 @@ const marker = L.marker(
   },
 );
 
-marker.on('moveend', (evt) => {
+marker.on('drag', (evt) => {
   addressInputForm.value = `${evt.target.getLatLng()['lat'].toFixed(5)  }, ${   evt.target.getLatLng()['lng'].toFixed(5)}`;
 });
 

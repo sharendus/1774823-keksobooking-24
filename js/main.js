@@ -1,13 +1,15 @@
-import {createAnnouncement} from './data.js';
 import {creatInactive, creatActive, mapLeaflet} from './form-status.js';
+import {createAnnouncement} from './data.js';
+
 import {testPageValue} from './form-validation.js';
 import {similarAnnouncements} from './card.js';
 
+
 creatInactive();
-creatActive();
 testPageValue();
 
 const carrayOfDeclarations = Array.from({length: 10}, createAnnouncement);
+
 
 carrayOfDeclarations.forEach((ads) => {
   const iconAdd = L.icon({
@@ -27,4 +29,8 @@ carrayOfDeclarations.forEach((ads) => {
   markerAdd.addTo(mapLeaflet);
   markerAdd.bindPopup(similarAnnouncements(ads));
 });
+
+
+creatActive();
+
 
