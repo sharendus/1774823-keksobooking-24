@@ -36,6 +36,7 @@ const creatActive = function () {
 const mapLeaflet = L.map('map-canvas')
   .on('load', () => {
     creatActive();
+    addressInputForm.value = '35.68950, 139.69171';
   })
   .setView({
     lat: 35.68950,
@@ -67,7 +68,7 @@ const marker = L.marker(
 );
 
 marker.on('moveend', (evt) => {
-  addressInputForm.value = `lat: ${  evt.target.getLatLng()['lat'].toFixed(5)  } lng: ${  evt.target.getLatLng()['lng'].toFixed(5)}`;
+  addressInputForm.value = `${evt.target.getLatLng()['lat'].toFixed(5)  }, ${   evt.target.getLatLng()['lng'].toFixed(5)}`;
 });
 
 marker.addTo(mapLeaflet);
