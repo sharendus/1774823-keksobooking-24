@@ -3,7 +3,6 @@ const formFieldset = form.querySelectorAll('.ad-form__element');
 const map = document.querySelector('.map__filters');
 const mapSelect = map.querySelectorAll('select');
 const mapFieldset = map.querySelector('fieldset');
-const addressInputForm = document.querySelector('#address');
 
 
 const creatInactive = function () {
@@ -29,49 +28,7 @@ const creatActive = function () {
   for (let i = 0; i < mapSelect.length; i++) {
     mapSelect[i].disabled = false;
   }
-
   mapFieldset.disabled = false;
 };
 
-const mapLeaflet = L.map('map-canvas')
-  .on('load', () => {
-    creatActive();
-    addressInputForm.value = '35.68950, 139.69171';
-  })
-  .setView({
-    lat: 35.68950,
-    lng: 139.69171,
-  }, 10);
-
-L.tileLayer(
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-  {
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  },
-).addTo(mapLeaflet);
-
-const mainPinIcon = L.icon({
-  iconUrl: 'img/main-pin.svg',
-  iconSize: [52, 52],
-  iconAnchor: [26, 52],
-});
-
-const marker = L.marker(
-  {
-    lat: 35.68950,
-    lng: 139.69171,
-  },
-  {
-    draggable: true,
-    icon: mainPinIcon,
-  },
-);
-
-marker.on('drag', (evt) => {
-  addressInputForm.value = `${evt.target.getLatLng()['lat'].toFixed(5)  }, ${   evt.target.getLatLng()['lng'].toFixed(5)}`;
-});
-
-marker.addTo(mapLeaflet);
-
-
-export {creatInactive, creatActive, mapLeaflet};
+export {creatInactive, creatActive};

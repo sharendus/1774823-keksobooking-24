@@ -5,12 +5,12 @@ const templateСardAnnouncement = document.querySelector('#card')
   .querySelector('.popup');
 
 //обьявляем функцию
-const similarAnnouncements = (ads) => {
+const similarAnnouncements = (element) => {
   const clonedTemplateCard = templateСardAnnouncement.cloneNode(true);
-  clonedTemplateCard.querySelector('.popup__title').textContent = ads.offer.title;
-  clonedTemplateCard.querySelector('.popup__text--address').textContent = ads.offer.address;
-  clonedTemplateCard.querySelector('.popup__text--price').textContent = `${ads.offer.price  } ₽/ночь`;
-  clonedTemplateCard.querySelector('.popup__type').textContent = getClothingType(ads.offer.type);
+  clonedTemplateCard.querySelector('.popup__title').textContent = element.offer.title;
+  clonedTemplateCard.querySelector('.popup__text--address').textContent = element.offer.address;
+  clonedTemplateCard.querySelector('.popup__text--price').textContent = `${element.offer.price  } ₽/ночь`;
+  clonedTemplateCard.querySelector('.popup__type').textContent = getClothingType(element.offer.type);
 
   function getClothingType (type) {
     if (type === 'palace') {
@@ -26,24 +26,24 @@ const similarAnnouncements = (ads) => {
     }
   }
 
-  clonedTemplateCard.querySelector('.popup__text--capacity').textContent = `${ads.offer.rooms  } комнаты для ${  ads.offer.guests  } гостей`;
-  clonedTemplateCard.querySelector('.popup__text--time').textContent = `Заезд после ${  ads.offer.checkin  }, выезд до ${  ads.offer.checkout}`;
+  clonedTemplateCard.querySelector('.popup__text--capacity').textContent = `${element.offer.rooms  } комнаты для ${  element.offer.guests  } гостей`;
+  clonedTemplateCard.querySelector('.popup__text--time').textContent = `Заезд после ${  element.offer.checkin  }, выезд до ${  element.offer.checkout}`;
 
 
   const featureContainer = clonedTemplateCard.querySelector('.popup__features');
   featureContainer.innerHTML = '';
-  ads.offer.features.forEach((feature) => {
+  element.offer.features.forEach((feature) => {
     const featureListItem = document.createElement('li');
     featureListItem.classList.add('popup__feature');
     featureListItem.classList.add(`popup__feature--${  feature}`);
     featureContainer.appendChild(featureListItem);
   });
 
-  clonedTemplateCard.querySelector('.popup__description').textContent = ads.offer.description;
+  clonedTemplateCard.querySelector('.popup__description').textContent = element.offer.description;
 
   const photoContainer = clonedTemplateCard.querySelector('.popup__photos');
   photoContainer.innerHTML = '';
-  ads.offer.photos.forEach((photoItem) => {
+  element.offer.photos.forEach((photoItem) => {
     const newPhotoList = document.createElement('img');
     newPhotoList.classList.add('popup__photo');
     newPhotoList.src = photoItem;
@@ -53,19 +53,19 @@ const similarAnnouncements = (ads) => {
     photoContainer.appendChild(newPhotoList);
   });
 
-  clonedTemplateCard.querySelector('.popup__avatar').src = ads.author.avatar;
+  clonedTemplateCard.querySelector('.popup__avatar').src = element.author.avatar;
 
 
-  if (ads.offer.features === undefined) {
+  if (element.offer.features === undefined) {
     clonedTemplateCard.querySelector('.popup__features').style.display = 'none';
   }
-  if (ads.offer.description === undefined) {
+  if (element.offer.description === undefined) {
     clonedTemplateCard.querySelector('.popup__description').style.display = 'none';
   }
-  if (ads.offer.photos === undefined) {
+  if (element.offer.photos === undefined) {
     clonedTemplateCard.querySelector('.popup__photos').style.display = 'none';
   }
-  if (ads.author.avatar === undefined) {
+  if (element.author.avatar === undefined) {
     clonedTemplateCard.querySelector('.popup__avatar').style.display = 'none';
   }
 
