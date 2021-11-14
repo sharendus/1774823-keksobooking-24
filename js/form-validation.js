@@ -2,7 +2,6 @@ const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
 const MAX_PRICE_LENGTH = 1000000;
 
-
 const titleInputForm = document.querySelector('#title');
 const priceInputForm = document.querySelector('#price');
 const typeSelectForm = document.querySelector('#type');
@@ -59,7 +58,7 @@ priceInputForm.addEventListener('input', () => {
   priceInputForm.reportValidity();
 });
 
-roomSelectForm.addEventListener('change', () => {
+const testRoomSelect = () => {
   if (roomSelectForm.value === '100') {
     for (let i = 0; i < capacitySelectForm.length; i++) {
       if (capacitySelectForm[i].value === '0') {
@@ -79,6 +78,10 @@ roomSelectForm.addEventListener('change', () => {
       }
     }
   }
+};
+
+roomSelectForm.addEventListener('change', () => {
+  testRoomSelect();
 });
 
 timeinSelectForm.addEventListener('change', () => {
@@ -101,4 +104,6 @@ timeoutSelectForm.addEventListener('change', () => {
   }
 });
 
-export {testPageValue};
+
+export {testPageValue, testRoomSelect};
+

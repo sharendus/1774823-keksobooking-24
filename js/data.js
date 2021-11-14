@@ -1,4 +1,4 @@
-import {getRandomFromRange, getRandomFromRangeToFixed} from './util.js';
+/*import {getRandomFromRange, getRandomFromRangeToFixed} from './util.js';
 
 // переменные
 const avatars = [
@@ -73,4 +73,4 @@ const createAnnouncement = () => {
   };
 };
 
-export {createAnnouncement};
+export {createAnnouncement};*/
