@@ -12,8 +12,8 @@ mapLeaflet.on('load', () => {
   addressInputForm.value = '35.68950, 139.69171';
   creatActive();
   getData((announcement) => {
-    const hhh = announcement.slice(0, 10);
-    hhh.forEach((element) => {
+    const tenAnnouncements = announcement.slice(0, 10);
+    tenAnnouncements.forEach((element) => {
       {
         const iconAdd = L.icon({
           iconUrl: 'img/pin.svg',
