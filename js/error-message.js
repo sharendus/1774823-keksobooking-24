@@ -13,6 +13,19 @@ const showAlert = (message) => {
   document.body.append(alertContainer);
 };
 
+const closeAnyMessage = (element) => {
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      evt.preventDefault();
+      element.remove();
+    }
+  });
+  window.addEventListener('click', () => {
+    element.remove();
+  });
+};
+
+
 const showSuccessMessage = () => {
   const successTemplate = document.querySelector('#success')
     .content
@@ -29,18 +42,6 @@ const showErrorMessage = () => {
   const errorMessage =  errorTemplate.cloneNode(true);
   document.body.append(errorMessage);
   return errorMessage;
-};
-
-const closeAnyMessage = (element) => {
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      evt.preventDefault();
-      element.remove();
-    }
-  });
-  window.addEventListener('click', () => {
-    element.remove();
-  });
 };
 
 
