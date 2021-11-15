@@ -82,6 +82,7 @@ submitButton.addEventListener('click', () => {
     lat: 35.68950,
     lng: 139.69171,
   });
+  mapLeaflet.closePopup();
 });
 
 resetButton.addEventListener('click', () => {
@@ -89,6 +90,7 @@ resetButton.addEventListener('click', () => {
     lat: 35.68950,
     lng: 139.69171,
   });
+  mapLeaflet.closePopup();
 });
 
 marker.addTo(mapLeaflet);

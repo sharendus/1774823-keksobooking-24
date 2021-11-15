@@ -34,13 +34,6 @@ const creatActive = function () {
   mapFieldset.disabled = false;
 };
 
-/*const setUserFormSubmit = () => {
-  form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    sendData (new FormData(evt.target),
-    );
-  });*/
-
 const setUserFormSubmit = (onSuccess) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();

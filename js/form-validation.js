@@ -1,3 +1,5 @@
+import { form } from './form-status.js';
+
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
 const MAX_PRICE_LENGTH = 1000000;
@@ -106,19 +108,11 @@ timeoutSelectForm.addEventListener('change', () => {
   }
 });
 
-
 const setUserFormReset = () => {
   resetButton.addEventListener('click', (evt) => {
     evt.preventDefault();
+    form.reset();
     addressInputForm.value = '35.68950, 139.69171';
-    titleInputForm.value = '';
-    typeSelectForm.value = 'flat';
-    priceInputForm.value = '';
-    priceInputForm.placeholder = '1000';
-    roomSelectForm.value = '1';
-    testRoomSelect();
-    timeinSelectForm.value = '12:00';
-    timeoutSelectForm.value = '12:00';
   });
 };
 

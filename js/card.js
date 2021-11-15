@@ -44,7 +44,6 @@ const similarAnnouncements = (element) => {
     clonedTemplateCard.querySelector('.popup__features').style.display = 'none';
   }
 
-
   clonedTemplateCard.querySelector('.popup__description').textContent = element.offer.description;
 
   const photoContainer = clonedTemplateCard.querySelector('.popup__photos');

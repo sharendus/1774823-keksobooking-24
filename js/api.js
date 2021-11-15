@@ -42,31 +42,4 @@ const sendData = (onSuccess, onFail, body) => {
     });
 };
 
-/*const sendData = (body) => {
-  fetch(
-    'https://24.javascript.pages.academy/keksobooking',
-    {
-      method: 'POST',
-      body,
-    },
-  )
-    .then((response) => {
-      if (response.ok) {
-        showSuccessMessage();
-        form.reset();
-        form.querySelector('#address').value = '35.68950, 139.69171';
-        closeAnyMessage(document.querySelector('.success'));
-      } else {
-        showErrorMessage();
-        form.reset();
-        form.querySelector('#address').value = '35.68950, 139.69171';
-        closeAnyMessage(document.querySelector('.error'));
-      }
-    })
-    .catch(() => {
-      showErrorMessage();
-      closeAnyMessage(document.querySelector('.error'));
-    });
-};*/
-
 export {getData, sendData};
