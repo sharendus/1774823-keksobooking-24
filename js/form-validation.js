@@ -9,6 +9,8 @@ const roomSelectForm = document.querySelector('#room_number');
 const capacitySelectForm = document.querySelector('#capacity');
 const timeinSelectForm = document.querySelector('#timein');
 const timeoutSelectForm = document.querySelector('#timeout');
+const addressInputForm = document.querySelector('#address');
+const resetButton = document.querySelector('.ad-form__reset');
 
 titleInputForm.addEventListener('input', () => {
   const valueLength = titleInputForm.value.length;
@@ -105,5 +107,20 @@ timeoutSelectForm.addEventListener('change', () => {
 });
 
 
-export {testPageValue, testRoomSelect};
+const setUserFormReset = () => {
+  resetButton.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    addressInputForm.value = '35.68950, 139.69171';
+    titleInputForm.value = '';
+    typeSelectForm.value = 'flat';
+    priceInputForm.value = '';
+    priceInputForm.placeholder = '1000';
+    roomSelectForm.value = '1';
+    testRoomSelect();
+    timeinSelectForm.value = '12:00';
+    timeoutSelectForm.value = '12:00';
+  });
+};
+
+export {testPageValue, testRoomSelect, setUserFormReset};
 

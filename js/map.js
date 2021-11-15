@@ -4,6 +4,8 @@ import {getData} from './api.js';
 
 
 const addressInputForm = document.querySelector('#address');
+const resetButton = document.querySelector('.ad-form__reset');
+const submitButton = document.querySelector('.ad-form__submit');
 
 //добавляем карту и обработчик события
 const mapLeaflet = L.map('map-canvas');
@@ -72,6 +74,21 @@ const marker = L.marker(
 //событие перетаскивания
 marker.on('drag', (evt) => {
   addressInputForm.value = `${evt.target.getLatLng()['lat'].toFixed(5)  }, ${   evt.target.getLatLng()['lng'].toFixed(5)}`;
+});
+
+//событие сброса
+submitButton.addEventListener('click', () => {
+  marker.setLatLng({
+    lat: 35.68950,
+    lng: 139.69171,
+  });
+});
+
+resetButton.addEventListener('click', () => {
+  marker.setLatLng({
+    lat: 35.68950,
+    lng: 139.69171,
+  });
 });
 
 marker.addTo(mapLeaflet);

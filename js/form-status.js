@@ -1,12 +1,11 @@
 import {sendData} from './api.js';
 import {showErrorMessage} from './error-message.js';
 
+const map = document.querySelector('.map__filters');
 const form = document.querySelector('.ad-form');
 const formFieldset = form.querySelectorAll('.ad-form__element');
-const map = document.querySelector('.map__filters');
 const mapSelect = map.querySelectorAll('select');
 const mapFieldset = map.querySelector('fieldset');
-//const resetButton = map.querySelector('.ad-form__reset');
 
 
 const creatInactive = function () {
@@ -53,12 +52,5 @@ const setUserFormSubmit = (onSuccess) => {
     );
   });
 };
-
-/*const setUserFormReset = () => {
-  resetButton.addEventListener('reset', (evt) => {
-    evt.preventDefault();
-    form.querySelector('#address').value = '35.68950, 139.69171';
-  });
-};*/
 
 export {creatInactive, creatActive, form, setUserFormSubmit};
