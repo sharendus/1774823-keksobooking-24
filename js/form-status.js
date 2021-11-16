@@ -1,6 +1,9 @@
+import {sendData} from './api.js';
+import {showErrorMessage} from './error-message.js';
+
+const map = document.querySelector('.map__filters');
 const form = document.querySelector('.ad-form');
 const formFieldset = form.querySelectorAll('.ad-form__element');
-const map = document.querySelector('.map__filters');
 const mapSelect = map.querySelectorAll('select');
 const mapFieldset = map.querySelector('fieldset');
 
@@ -31,4 +34,16 @@ const creatActive = function () {
   mapFieldset.disabled = false;
 };
 
-export {creatInactive, creatActive};
+const setUserFormSubmit = (onSuccess) => {
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    sendData(
+      () => onSuccess(),
+      () => showErrorMessage(),
+      new FormData(evt.target),
+    );
+  });
+};
+
+export {creatInactive, creatActive, form, setUserFormSubmit};

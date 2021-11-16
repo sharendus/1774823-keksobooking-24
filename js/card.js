@@ -32,38 +32,43 @@ const similarAnnouncements = (element) => {
 
   const featureContainer = clonedTemplateCard.querySelector('.popup__features');
   featureContainer.innerHTML = '';
-  element.offer.features.forEach((feature) => {
-    const featureListItem = document.createElement('li');
-    featureListItem.classList.add('popup__feature');
-    featureListItem.classList.add(`popup__feature--${  feature}`);
-    featureContainer.appendChild(featureListItem);
-  });
+
+  if (element.offer.features !== undefined) {
+    element.offer.features.forEach((feature) => {
+      const featureListItem = document.createElement('li');
+      featureListItem.classList.add('popup__feature');
+      featureListItem.classList.add(`popup__feature--${  feature}`);
+      featureContainer.appendChild(featureListItem);
+    });
+  } else {
+    clonedTemplateCard.querySelector('.popup__features').style.display = 'none';
+  }
 
   clonedTemplateCard.querySelector('.popup__description').textContent = element.offer.description;
 
   const photoContainer = clonedTemplateCard.querySelector('.popup__photos');
   photoContainer.innerHTML = '';
-  element.offer.photos.forEach((photoItem) => {
-    const newPhotoList = document.createElement('img');
-    newPhotoList.classList.add('popup__photo');
-    newPhotoList.src = photoItem;
-    newPhotoList.width = 45;
-    newPhotoList.height = 40;
-    newPhotoList.alt = 'Фотография жилья';
-    photoContainer.appendChild(newPhotoList);
-  });
+
+  if (element.offer.photos !== undefined) {
+    element.offer.photos.forEach((photoItem) => {
+      const newPhotoList = document.createElement('img');
+      newPhotoList.classList.add('popup__photo');
+      newPhotoList.src = photoItem;
+      newPhotoList.width = 45;
+      newPhotoList.height = 40;
+      newPhotoList.alt = 'Фотография жилья';
+      photoContainer.appendChild(newPhotoList);
+    });
+  } else {
+    clonedTemplateCard.querySelector('.popup__photos').style.display = 'none';
+  }
+
 
   clonedTemplateCard.querySelector('.popup__avatar').src = element.author.avatar;
 
 
-  if (element.offer.features === undefined) {
-    clonedTemplateCard.querySelector('.popup__features').style.display = 'none';
-  }
   if (element.offer.description === undefined) {
     clonedTemplateCard.querySelector('.popup__description').style.display = 'none';
-  }
-  if (element.offer.photos === undefined) {
-    clonedTemplateCard.querySelector('.popup__photos').style.display = 'none';
   }
   if (element.author.avatar === undefined) {
     clonedTemplateCard.querySelector('.popup__avatar').style.display = 'none';

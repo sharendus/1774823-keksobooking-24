@@ -1,12 +1,11 @@
 import {creatActive} from './form-status.js';
-import {createAnnouncement} from './data.js';
 import {similarAnnouncements} from './card.js';
-//import {carrayOfDeclarations} from './main.js';
+import {getData} from './api.js';
 
 
 const addressInputForm = document.querySelector('#address');
-const carrayOfDeclarations = Array.from({length: 10}, createAnnouncement);
-
+const resetButton = document.querySelector('.ad-form__reset');
+const submitButton = document.querySelector('.ad-form__submit');
 
 //добавляем карту и обработчик события
 const mapLeaflet = L.map('map-canvas');
@@ -14,25 +13,27 @@ const mapLeaflet = L.map('map-canvas');
 mapLeaflet.on('load', () => {
   addressInputForm.value = '35.68950, 139.69171';
   creatActive();
+  getData((announcement) => {
+    const tenAnnouncements = announcement.slice(0, 10);
+    tenAnnouncements.forEach((element) => {
+      {
+        const iconAdd = L.icon({
+          iconUrl: 'img/pin.svg',
+          iconSize: [40, 40],
+          iconAnchor: [20, 40],
+        });
 
-  //перебираем массив
-  carrayOfDeclarations.forEach((element) => {
-    const iconAdd = L.icon({
-      iconUrl: 'img/pin.svg',
-      iconSize: [40, 40],
-      iconAnchor: [20, 40],
+        const markerAdd = L.marker({
+          lat: element.location.lat,
+          lng: element.location.lng,
+        },
+        {
+          icon: iconAdd,
+        });
+        markerAdd.addTo(mapLeaflet);
+        markerAdd.bindPopup(similarAnnouncements(element));
+      }
     });
-
-    const markerAdd = L.marker({
-      lat: element.location.lat,
-      lng: element.location.lng,
-    },
-    {
-      icon: iconAdd,
-    });
-
-    markerAdd.addTo(mapLeaflet);
-    markerAdd.bindPopup(similarAnnouncements(element));
   });
 });
 
@@ -73,6 +74,23 @@ const marker = L.marker(
 //событие перетаскивания
 marker.on('drag', (evt) => {
   addressInputForm.value = `${evt.target.getLatLng()['lat'].toFixed(5)  }, ${   evt.target.getLatLng()['lng'].toFixed(5)}`;
+});
+
+//событие сброса
+submitButton.addEventListener('click', () => {
+  marker.setLatLng({
+    lat: 35.68950,
+    lng: 139.69171,
+  });
+  mapLeaflet.closePopup();
+});
+
+resetButton.addEventListener('click', () => {
+  marker.setLatLng({
+    lat: 35.68950,
+    lng: 139.69171,
+  });
+  mapLeaflet.closePopup();
 });
 
 marker.addTo(mapLeaflet);
