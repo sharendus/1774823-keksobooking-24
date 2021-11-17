@@ -39,7 +39,10 @@ const setUserFormSubmit = (onSuccess) => {
     evt.preventDefault();
 
     sendData(
-      () => onSuccess(),
+      () => onSuccess(
+        form.reset(),
+        form.querySelector('#address').value = '35.68950, 139.69171',
+      ),
       () => showErrorMessage(),
       new FormData(evt.target),
     );

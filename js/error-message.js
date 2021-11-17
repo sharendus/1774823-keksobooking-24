@@ -1,3 +1,5 @@
+
+
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = 100;
@@ -13,7 +15,7 @@ const showAlert = (message) => {
   document.body.append(alertContainer);
 };
 
-const closeAnyMessage = (element) => {
+/*const closeAnyMessage = (element) => {
   document.addEventListener('keydown', (evt) => {
     if (evt.key === 'Escape') {
       evt.preventDefault();
@@ -25,6 +27,20 @@ const closeAnyMessage = (element) => {
   });
 };
 
+const isEscapeKey = (evt) => {
+  return evt.key === 'Escape';
+};
+
+const isEnterKey = (evt) => {
+  return evt.key === 'Enter';
+};
+
+document.isEscapeKey('keydown', (evt) => {
+  if (closeAnyMessage(evt)) {
+    evt.preventDefault();
+    //userModalElement.classList.add('hidden');
+  }
+});*/
 
 const showSuccessMessage = () => {
   const successTemplate = document.querySelector('#success')
@@ -32,7 +48,17 @@ const showSuccessMessage = () => {
     .querySelector('.success');
   const successMessage =  successTemplate.cloneNode(true);
   document.body.append(successMessage);
-  return successMessage;
+
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      evt.preventDefault();
+      successMessage.remove();
+    }
+  });
+  window.addEventListener('click', () => {
+    successMessage.remove();
+  });
+
 };
 
 const showErrorMessage = () => {
@@ -41,8 +67,16 @@ const showErrorMessage = () => {
     .querySelector('.error');
   const errorMessage =  errorTemplate.cloneNode(true);
   document.body.append(errorMessage);
-  return errorMessage;
+
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      evt.preventDefault();
+      errorMessage.remove();
+    }
+  });
+  window.addEventListener('click', () => {
+    errorMessage.remove();
+  });
 };
 
-
-export {showAlert, showSuccessMessage, showErrorMessage, closeAnyMessage};
+export {showAlert, showSuccessMessage, showErrorMessage};

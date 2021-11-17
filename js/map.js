@@ -1,6 +1,7 @@
 import {creatActive} from './form-status.js';
 import {similarAnnouncements} from './card.js';
 import {getData} from './api.js';
+import {showAlert} from './error-message.js';
 
 
 const addressInputForm = document.querySelector('#address');
@@ -13,28 +14,31 @@ const mapLeaflet = L.map('map-canvas');
 mapLeaflet.on('load', () => {
   addressInputForm.value = '35.68950, 139.69171';
   creatActive();
-  getData((announcement) => {
-    const tenAnnouncements = announcement.slice(0, 10);
-    tenAnnouncements.forEach((element) => {
-      {
-        const iconAdd = L.icon({
-          iconUrl: 'img/pin.svg',
-          iconSize: [40, 40],
-          iconAnchor: [20, 40],
-        });
-
-        const markerAdd = L.marker({
-          lat: element.location.lat,
-          lng: element.location.lng,
-        },
+  getData(
+    (announcement) => {
+      const tenAnnouncements = announcement.slice(0, 10);
+      tenAnnouncements.forEach((element) => {
         {
-          icon: iconAdd,
-        });
-        markerAdd.addTo(mapLeaflet);
-        markerAdd.bindPopup(similarAnnouncements(element));
-      }
-    });
-  });
+          const iconAdd = L.icon({
+            iconUrl: 'img/pin.svg',
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+          });
+
+          const markerAdd = L.marker({
+            lat: element.location.lat,
+            lng: element.location.lng,
+          },
+          {
+            icon: iconAdd,
+          });
+          markerAdd.addTo(mapLeaflet);
+          markerAdd.bindPopup(similarAnnouncements(element));
+        }
+      });
+    },
+    () => showAlert(),
+  );
 });
 
 //центрирование карты
